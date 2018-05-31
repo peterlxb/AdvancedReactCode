@@ -12,8 +12,9 @@
 
 1.  App Component
 
-| App Component |
-| Shows the Comment Box inside of it |
+| App Component                       |
+| ----------------------------------- |
+| Shows the Comment Box inside of it  |
 | Shows the Comment List inside of it |
 
 2.  CommentBox Component
