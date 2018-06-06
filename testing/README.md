@@ -45,3 +45,11 @@
 | --------------------------------------------------------------- |
 | Has a type of 'SAVE_COMMENT'                                    |
 | Produces an action that has a payload of the new comment's text |
+
+### 基本测试语法
+
+![](./assets/test-01.png)
+
+### enzyme 设计
+
+![](./assets/enzyme-01.png)
