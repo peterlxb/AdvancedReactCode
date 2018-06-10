@@ -1,28 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
-import { Provider } from "react-redux";
-import { createStore, compose } from "redux";
-
-import reducers from "reducers";
-
 import App from "./components/App";
 import registerServiceWorker from "./registerServiceWorker";
-
-const initialState = {};
-
-const store = createStore(
-  reducers,
-  initialState,
-  compose(
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  )
-);
+import Root from "./Root";
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Root>
     <App />
-  </Provider>,
+  </Root>,
   document.getElementById("root")
 );
 registerServiceWorker();
