@@ -7,14 +7,16 @@ class CommentList extends Component {
     let commentList;
 
     if (comments.length != 0) {
-      commentList = comments.map((comment, index) => (
-        <li key={index}>{comment}</li>
-      ));
+      commentList = comments.map(comment => <li key={comment}>{comment}</li>);
     } else {
       commentList = <h4>Loading Comments</h4>;
     }
 
-    return <div>{commentList}</div>;
+    return (
+      <div>
+        <ul>{commentList}</ul>
+      </div>
+    );
   }
 }
 
