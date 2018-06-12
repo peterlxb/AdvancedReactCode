@@ -6,7 +6,7 @@ class CommentList extends Component {
     const { comments } = this.props;
     let commentList;
 
-    if (comments.length != 0) {
+    if (comments.length !== 0) {
       commentList = comments.map(comment => <li key={comment}>{comment}</li>);
     } else {
       commentList = <h4>Loading Comments</h4>;
