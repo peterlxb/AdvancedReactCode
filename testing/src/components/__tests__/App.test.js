@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { shallow } from "enzyme";
-import App from "components//App";
+import App from "components/App";
 import CommentBox from "components/CommentBox";
 import CommentList from "components/CommentList";
 
