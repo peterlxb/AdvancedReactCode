@@ -15,11 +15,13 @@ import reducers from "reducers";
 //   )
 // );
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 export default ({ children, initialState = {} }) => {
   const store = createStore(
     reducers,
     initialState,
-    applyMiddleware(reduxPromise)
+    composeEnhancers(applyMiddleware(reduxPromise))
   );
   return <Provider store={store}>{children}</Provider>;
 };
