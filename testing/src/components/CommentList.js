@@ -14,6 +14,7 @@ class CommentList extends Component {
 
     return (
       <div>
+        <h4>Comment List</h4>
         <ul>{commentList}</ul>
       </div>
     );
