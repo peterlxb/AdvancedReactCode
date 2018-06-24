@@ -1,4 +1,5 @@
 const User = require("../models/user");
+const bcrypt = require("bcryptjs");
 
 exports.signup = function(req, res, next) {
   const email = req.body.email;
@@ -19,10 +20,17 @@ exports.signup = function(req, res, next) {
       });
 
       // Respond to request indicating the user was created
-      newUser
-        .save()
-        .then(user => res.json(user))
-        .catch(err => console.log(err));
+      // generate salt for password
+      bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(newUser.password, salt, (err, hash) => {
+          if (err) throw err;
+          newUser.password = hash;
+          newUser
+            .save()
+            .then(user => res.json(user))
+            .catch(err => console.log(err));
+        });
+      });
     }
   });
 };
