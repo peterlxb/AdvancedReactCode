@@ -11,10 +11,10 @@ router.get("/test", (req, res) => {
   return res.json({ msg: "Users Works" });
 });
 
-//@route GET users/signup
+//@route POST users/signup
 //@desc Signup new user goes here
 //@access Public
-router.get("/signup", Authentication.signup, (req, res) => {
+router.post("/signup", Authentication.signup, (req, res) => {
   return res.json({ msg: "Users Works" });
 });
 
