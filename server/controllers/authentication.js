@@ -65,7 +65,7 @@ exports.login = function(req, res) {
         const payload = {
           id: user.id
         };
-        console.log("payload", payload);
+
         // Sign Token
         jwt.sign(
           payload,
@@ -76,6 +76,7 @@ exports.login = function(req, res) {
           (err, token) => {
             res.json({
               success: true,
+              msg: "User login successed!",
               token: "Bearer " + token
             });
           }

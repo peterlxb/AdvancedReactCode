@@ -39,53 +39,8 @@ router.post("/signup", Authentication.signup, (req, res) => {
 //@route POST users/signup
 //@desc Signup new user goes here
 //@access Public
-router.post("/login", (req, res) => {
-  const email = req.body.email;
-  const password = req.body.password;
-
-  //Find user by email
-  User.findOne({ email })
-    .then(user => {
-      //Check for user
-      console.log(user);
-      if (!user) {
-        //errors.email = "User not found";
-        return res.status(404).json({ errors: "User not found" });
-      }
-
-      //Check Password
-      bcrypt
-        .compare(password, user.password)
-        .then(isMatch => {
-          //console.log("password", password);
-          if (isMatch) {
-            // User Matched
-
-            //Create JWT payload
-            const payload = { id: user._id };
-            console.log("payload", payload);
-            // Sign Token
-            jwt.sign(
-              payload,
-              keys.secretOrKey,
-              {
-                expiresIn: 3600
-              },
-              (err, token) => {
-                res.json({
-                  success: true,
-                  token: "Bearer " + token
-                });
-              }
-            );
-          } else {
-            //errors.password = "password incorrect";
-            return res.status(400).json({ errors: "password incorrect" });
-          }
-        })
-        .then(e => console.log(e));
-    })
-    .catch(e => console.log(e));
+router.post("/login", Authentication.login, (req, res) => {
+  return res.json({ msg: "User login successed!" });
 });
 
 module.exports = router;
