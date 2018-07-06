@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import App from "./components/App";
 import registerServiceWorker from "./registerServiceWorker";
 
-import todoStore from "./components/TodoStore";
+import TodoStore from "./components/TodoStore";
 
-ReactDOM.render(<App store={todoStore} />, document.getElementById("root"));
+ReactDOM.render(<App store={TodoStore} />, document.getElementById("root"));
 registerServiceWorker();

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import TodoList from "./TodoList";
+import AddTodo from "./AddTodo";
 
 class App extends Component {
   render() {
@@ -9,6 +10,7 @@ class App extends Component {
       <div className="App">
         <h1>MobX</h1>
         <TodoList store={store} />
+        <AddTodo />
       </div>
     );
   }

@@ -1,27 +1,13 @@
-import { autorun, observable, computed } from "mobx";
+import { observable, autorun, action, decorate } from "mobx";
 
-var todoStore = observable({
-  /* some observable state */
-  todos: [],
-
-  /* a derived value */
-  get completeTodosCount() {
-    return this.todos.filter(todo => todo.completed === true).length;
-  }
+class TodoStore {
+  id = Math.random();
+  title = "";
+  finished = false;
+}
+decorate(TodoStore, {
+  title: observable,
+  finished: observable
 });
 
-autorun(function() {
-  console.log(
-    "Completed %d of %d items",
-    todoStore.completedCount,
-    todoStore.todos.length
-  );
-});
-
-/* ..and some actions that modify the state */
-todoStore.todos[0] = {
-  title: "Take a walk",
-  completed: false
-};
-
-export default todoStore;
+export default TodoStore;
