@@ -1,13 +1,13 @@
-import { observable, autorun, action, decorate } from "mobx";
+import { observable, autorun } from "mobx";
 
-class TodoStore {
-  id = Math.random();
-  title = "";
-  finished = false;
-}
-decorate(TodoStore, {
-  title: observable,
-  finished: observable
+const counterState = observable({
+  value: 0,
+  inc: function() {
+    counterState.value++;
+  },
+  dec: function() {
+    counterState.value--;
+  }
 });
 
-export default TodoStore;
+export default counterState;

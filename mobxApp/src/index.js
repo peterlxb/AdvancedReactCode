@@ -1,9 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/App";
-import registerServiceWorker from "./registerServiceWorker";
 
-import TodoStore from "./components/TodoStore";
+import counterState from "./components/TodoStore";
 
-ReactDOM.render(<App store={TodoStore} />, document.getElementById("root"));
-registerServiceWorker();
+ReactDOM.render(<App state={counterState} />, document.getElementById("root"));
