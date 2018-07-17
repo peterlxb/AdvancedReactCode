@@ -21,13 +21,14 @@ const commonConfig = merge([
 ]);
 
 const productionConfig = merge([
-  parts.loadCSS(),
   parts.extractCSS({
     use: "css-loader"
   }),
+
   parts.purifyCSS({
     paths: glob.sync(`${PATHS.app}/**/*.js`, { nodir: true })
-  })
+  }),
+  parts.loadCSS()
 ]);
 
 const developmentConfig = merge([

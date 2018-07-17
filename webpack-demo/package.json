@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --env development",
-    "build": "webpack --env production"
+    "build": "webpack --env production",
+    "compile:sass": "node-sass sass/main.scss styles/styles.css"
   },
   "keywords": [],
   "author": "",
