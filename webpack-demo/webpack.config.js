@@ -17,18 +17,24 @@ const commonConfig = merge([
         title: "Webpack demo"
       })
     ]
-  }
+  },
+  parts.loadCSS()
 ]);
 
 const productionConfig = merge([
-  parts.extractCSS({
-    use: ["css-loader", parts.autoprefix()]
-  }),
+  // parts.extractCSS({
+  //   use: ["css-loader", parts.autoprefix()]
+  // }),
 
-  parts.purifyCSS({
-    paths: glob.sync(`${PATHS.app}/**/*.js`, { nodir: true })
-  }),
-  parts.loadCSS()
+  // parts.purifyCSS({
+  //   paths: glob.sync(`${PATHS.app}/**/*.js`, { nodir: true })
+  // }),
+  parts.loadImages({
+    options: {
+      limit: 15000,
+      name: "[name].[ext]"
+    }
+  })
 ]);
 
 const developmentConfig = merge([
@@ -37,7 +43,8 @@ const developmentConfig = merge([
     host: process.env.HOST,
     port: process.env.PORT
   }),
-  parts.loadCSS()
+  parts.loadCSS(),
+  parts.loadImages()
 ]);
 
 module.exports = mode => {

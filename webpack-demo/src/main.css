@@ -1,5 +1,7 @@
 body {
   background: cornsilk;
-  -webkit-border-radius: 1em;
-  border-radius: 1em;
+
+  background-image: url("./logo.png");
+  background-repeat: no-repeat;
+  background-position: center;
 }

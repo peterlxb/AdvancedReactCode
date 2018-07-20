@@ -15,11 +15,10 @@ exports.loadCSS = ({ include, exclude } = {}) => ({
   module: {
     rules: [
       {
-        test: /\.scss$/,
+        test: /\.css$/,
         include,
         exclude,
-
-        use: ["style-loader", "css-loader", "sass-loader"]
+        use: ["style-loader", "css-loader"]
       }
     ]
   }
@@ -55,5 +54,21 @@ exports.autoprefix = () => ({
   loader: "postcss-loader",
   options: {
     plugins: () => [require("autoprefixer")()]
+  }
+});
+
+exports.loadImages = ({ include, exclude, options } = {}) => ({
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpg)$/,
+        include,
+        exclude,
+        use: {
+          loader: "url-loader",
+          options
+        }
+      }
+    ]
   }
 });
