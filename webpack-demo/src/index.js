@@ -1,8 +1,8 @@
-import component from "./component";
-//import "purecss";
+import React from "react";
+import ReactDOM from "react-dom";
 
-//import "../sass/main.scss";
+import App from "./component";
 
 import "./main.css";
 
-document.body.appendChild(component());
+ReactDOM.render(<App />, document.getElementById("app"));

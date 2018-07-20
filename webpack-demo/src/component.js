@@ -1,9 +1,13 @@
-export default (text = "Hello world") => {
-  const element = document.createElement("div");
+import React, { Component } from "react";
 
-  element.className = "pure-button";
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <p>My Minimal React Webpack Babel Setup</p>
+      </div>
+    );
+  }
+}
 
-  element.innerHTML = text;
-
-  return element;
-};
+export default App;

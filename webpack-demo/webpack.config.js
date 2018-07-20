@@ -12,12 +12,21 @@ const PATHS = {
 
 const commonConfig = merge([
   {
+    output: {
+      path: __dirname + "/dist",
+      publicPath: "/",
+      filename: "bundle.js"
+    }
+  },
+  {
     plugins: [
       new HtmlWebpackPlugin({
-        title: "Webpack demo"
+        title: "Webpack demo",
+        template: "src/index.html"
       })
     ]
-  }
+  },
+  parts.loadJavaScript({ include: PATHS.app })
 ]);
 
 const productionConfig = merge([

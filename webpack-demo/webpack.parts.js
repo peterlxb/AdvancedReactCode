@@ -72,3 +72,19 @@ exports.loadImages = ({ include, exclude, options } = {}) => ({
     ]
   }
 });
+
+exports.loadJavaScript = ({ include, exclude } = {}) => ({
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        include,
+        exclude: /node_modules/,
+        use: ["babel-loader"]
+      }
+    ]
+  },
+  resolve: {
+    extensions: ["*", ".js", ".jsx"]
+  }
+});
