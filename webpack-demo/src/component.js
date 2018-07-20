@@ -4,7 +4,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <p>My Minimal React Webpack Babel Setup</p>
+        <h2>Minimal React Webpack Babel Setup</h2>
       </div>
     );
   }

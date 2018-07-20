@@ -1,5 +1,6 @@
 const merge = require("webpack-merge");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
 
 const path = require("path");
 const glob = require("glob");
@@ -15,11 +16,12 @@ const commonConfig = merge([
     output: {
       path: __dirname + "/dist",
       publicPath: "/",
-      filename: "bundle.js"
+      filename: "[name].[chunkhash].js"
     }
   },
   {
     plugins: [
+      new CleanWebpackPlugin(["dist"]),
       new HtmlWebpackPlugin({
         title: "Webpack demo",
         template: "src/index.html"
