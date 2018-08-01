@@ -88,3 +88,7 @@ exports.loadJavaScript = ({ include, exclude } = {}) => ({
     extensions: ["*", ".js", ".jsx"]
   }
 });
+
+exports.generateSourceMaps = ({ type }) => ({
+  devtool: type
+});
