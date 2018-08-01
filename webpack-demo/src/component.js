@@ -5,7 +5,7 @@ class App extends Component {
     return (
       <div>
         <h2>Minimal React Webpack Babel Setup!</h2>
-        <p>Just</p>
+        <p>Just for</p>
       </div>
     );
   }

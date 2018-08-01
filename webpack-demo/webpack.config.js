@@ -26,7 +26,8 @@ const commonConfig = merge([
       new HtmlWebpackPlugin({
         title: "Webpack demo",
         template: "src/index.html"
-      })
+      }),
+      new webpack.HashedModuleIdsPlugin()
     ]
   },
   parts.loadJavaScript({ include: PATHS.app })
@@ -55,16 +56,17 @@ const productionConfig = merge([
   parts.generateSourceMaps({ type: "source-map" }),
   {
     optimization: {
+      runtimeChunk: "single",
       splitChunks: {
-        // cacheGroups: {
-        //   commons: {
-        //     test: /[\\/]node_modules[\\/]/,
-        //     name: "vendor",
-        //     chunks: "initial"
-        //   }
-        // }
-        name: "vendor",
-        chunks: "initial"
+        cacheGroups: {
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: "vendors",
+            chunks: "all"
+          }
+        }
+        // name: "vendor",
+        // chunks: "all"
       }
     }
   }
