@@ -1,6 +1,7 @@
 const merge = require("webpack-merge");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
+const webpack = require("webpack");
 
 const path = require("path");
 const glob = require("glob");
@@ -32,6 +33,12 @@ const commonConfig = merge([
 ]);
 
 const productionConfig = merge([
+  {
+    output: {
+      chunkFilename: "[name].[chunkhash:4].js",
+      filename: "[name].[chunkhash:4].js"
+    }
+  },
   parts.extractCSS({
     use: ["css-loader", parts.autoprefix()]
   }),
@@ -49,13 +56,15 @@ const productionConfig = merge([
   {
     optimization: {
       splitChunks: {
-        cacheGroups: {
-          commons: {
-            test: /[\\/]node_modules[\\/]/,
-            name: "vendor",
-            chunks: "initial"
-          }
-        }
+        // cacheGroups: {
+        //   commons: {
+        //     test: /[\\/]node_modules[\\/]/,
+        //     name: "vendor",
+        //     chunks: "initial"
+        //   }
+        // }
+        name: "vendor",
+        chunks: "initial"
       }
     }
   }
