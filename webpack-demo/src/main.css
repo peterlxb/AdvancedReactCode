@@ -1,11 +1,89 @@
 body {
+  margin: 0 auto;
   background: cornsilk;
-
   background-image: url("./logo.png");
   background-repeat: no-repeat;
   background-position: center;
+  background-size: 100% 720px;
 }
 
 p {
   color: red;
+}
+
+.container {
+  width: 600px;
+  height: 400px;
+
+  text-align: center;
+  margin: 0 auto;
+  background-color: #34495e;
+  border-radius: 4px;
+  margin-top: 150px;
+}
+
+.container img {
+  width: 120px;
+  height: 120px;
+  margin-top: -60px;
+  margin-right: 30px;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type="text"],
+input[type="password"] {
+  height: 45px;
+  font-size: 18px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 4px;
+  padding-left: 12px;
+}
+
+.form-input::before {
+  content: "";
+  position: absolute;
+  font-family: "FontAwesome";
+  font-size: 35px;
+  padding-top: 5px;
+  padding-left: 5px;
+  color: #9b59b6;
+}
+
+.form-input:last-child::before {
+  content: "";
+}
+
+.btn-login {
+  padding: 15px 30px;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  background-color: #2ecc71;
+  border-bottom: 4px solid #27ae60;
+}
+
+/* use flex layout */
+
+.col-sm-2,
+.col-sm-10 {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.col-sm-2 {
+  flex: 0 0 16.666667%;
+  max-width: 16.666667%;
+}
+
+.col-sm-10 {
+  flex: 0 0 83.333333%;
+  max-width: 83.333333%;
 }

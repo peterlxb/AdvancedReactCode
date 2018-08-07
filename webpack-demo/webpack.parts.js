@@ -1,5 +1,6 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const PurifyCSSPlugin = require("purifycss-webpack");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
 
 exports.devServer = ({ host, port } = {}) => ({
   devServer: {
@@ -91,4 +92,8 @@ exports.loadJavaScript = ({ include, exclude } = {}) => ({
 
 exports.generateSourceMaps = ({ type }) => ({
   devtool: type
+});
+
+exports.clean = path => ({
+  plugins: [new CleanWebpackPlugin([path])]
 });

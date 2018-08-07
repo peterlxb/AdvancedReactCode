@@ -1,14 +1,16 @@
 import React, { Component } from "react";
+import Loadable from "react-loadable";
+
+import lazy from "./lazy";
+
+const LoadableComponent = Loadable({
+  loader: () => import("./Dashboard"),
+  loading: lazy
+});
 
 class App extends Component {
   render() {
-    return (
-      <div>
-        <h2>Minimal React Webpack Babel Setup!</h2>
-        <p>Just for</p>
-      </div>
-    );
+    return <LoadableComponent />;
   }
 }
-
 export default App;

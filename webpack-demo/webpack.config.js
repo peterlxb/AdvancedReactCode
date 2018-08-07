@@ -1,6 +1,5 @@
 const merge = require("webpack-merge");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
 const webpack = require("webpack");
 
 const path = require("path");
@@ -9,20 +8,19 @@ const glob = require("glob");
 const parts = require("./webpack.parts");
 
 const PATHS = {
-  app: path.join(__dirname, "src")
+  app: path.join(__dirname, "src"),
+  build: path.join(__dirname, "dist")
 };
 
 const commonConfig = merge([
   {
     output: {
       path: __dirname + "/dist",
-      publicPath: "/",
       filename: "[name].[chunkhash].js"
     }
   },
   {
     plugins: [
-      new CleanWebpackPlugin(["dist"]),
       new HtmlWebpackPlugin({
         title: "Webpack demo",
         template: "src/index.html"
@@ -34,6 +32,7 @@ const commonConfig = merge([
 ]);
 
 const productionConfig = merge([
+  parts.clean(PATHS.build),
   {
     output: {
       chunkFilename: "[name].[chunkhash:4].js",
