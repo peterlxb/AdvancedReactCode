@@ -66,6 +66,9 @@ const productionConfig = merge([
         }
         // name: "vendor",
         // chunks: "all"
+      },
+      runtimeChunk: {
+        name: "manifest"
       }
     }
   }
