@@ -28,14 +28,14 @@ exports.loadCSS = ({ include, exclude } = {}) => ({
 exports.extractCSS = ({ include, exclude, use = [] }) => {
   // Output extracted CSS to a file
   const plugin = new MiniCssExtractPlugin({
-    filename: "[name].[contenthash:4].css"
+    filename: "[name].css"
   });
 
   return {
     module: {
       rules: [
         {
-          test: /\.(le|c)ss$/,
+          test: /\.css$/,
           include,
           exclude,
           use: [MiniCssExtractPlugin.loader].concat(use)

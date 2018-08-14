@@ -1,5 +1,6 @@
-import { Table } from "antd";
+import Table from "antd/lib/table";
 import React from "react";
+import "antd/lib/table/style/css";
 
 class MyTable extends React.Component {
   render() {

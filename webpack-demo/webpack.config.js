@@ -39,10 +39,10 @@ const productionConfig = merge([
       filename: "[name].[chunkhash:4].js"
     }
   },
-  parts.extractCSS({
-    use: ["css-loader", parts.autoprefix()]
-  }),
-
+  parts.loadCSS(),
+  // parts.extractCSS({
+  //   use: ["css-loader", parts.autoprefix()]
+  // }),
   parts.purifyCSS({
     paths: glob.sync(`${PATHS.app}/**/*.js`, { nodir: true })
   }),
@@ -58,8 +58,8 @@ const productionConfig = merge([
       runtimeChunk: "single",
       splitChunks: {
         cacheGroups: {
-          vendor: {
-            test: /[\\/]node_modules[\\/]/,
+          commons: {
+            test: /node_modules\/(.*)\.js/,
             name: "vendors",
             chunks: "all"
           }
