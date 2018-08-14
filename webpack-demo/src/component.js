@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Loadable from "react-loadable";
-
+import MyTable from "./Table";
 import lazy from "./lazy";
 
 const LoadableComponent = Loadable({
@@ -10,7 +10,7 @@ const LoadableComponent = Loadable({
 
 class App extends Component {
   render() {
-    return <LoadableComponent />;
+    return <MyTable />;
   }
 }
 export default App;

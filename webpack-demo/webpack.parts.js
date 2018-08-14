@@ -35,10 +35,9 @@ exports.extractCSS = ({ include, exclude, use = [] }) => {
     module: {
       rules: [
         {
-          test: /\.css$/,
+          test: /\.(le|c)ss$/,
           include,
           exclude,
-
           use: [MiniCssExtractPlugin.loader].concat(use)
         }
       ]

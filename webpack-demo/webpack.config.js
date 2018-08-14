@@ -49,7 +49,7 @@ const productionConfig = merge([
   parts.loadImages({
     options: {
       limit: 15000,
-      name: "[name].[ext]"
+      name: "[name].[hash:4].[ext]"
     }
   }),
   parts.generateSourceMaps({ type: "source-map" }),
