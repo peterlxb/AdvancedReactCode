@@ -1,24 +1,34 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { List } from "antd";
 
 class Contact extends Component {
+  handleClick = () => {
+    console.log("hello");
+  };
+
   render() {
-    const { name, email, phone } = this.props;
-    console.log(this.props);
-    const data = [this.props.email, this.props.phone];
+    const { name, email, phone } = this.props.contact;
+
     return (
-      <div>
-        <h4>{name}</h4>
-        <List
-          size="large"
-          bordered
-          dataSource={data}
-          renderItem={item => <List.Item>{item}</List.Item>}
-        />
+      <div className="card card-body mb-3">
+        <h4>
+          {name}{" "}
+          <i className="fas fa-sort-down" onClick={() => this.handleClick()} />
+        </h4>
+        <ul className="list-group">
+          <li className="list-group-item">Email: {email}</li>
+          <li className="list-group-item">
+            Phone:
+            {phone}
+          </li>
+        </ul>
       </div>
     );
   }
 }
+
+Contact.propTypes = {
+  contact: PropTypes.object.isRequired
+};
 
 export default Contact;

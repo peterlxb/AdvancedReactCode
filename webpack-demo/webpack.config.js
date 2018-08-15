@@ -16,7 +16,7 @@ const commonConfig = merge([
   {
     output: {
       path: __dirname + "/dist",
-      filename: "[name].[chunkhash].js"
+      filename: "[name].[hash].js"
     }
   },
   {
@@ -25,7 +25,8 @@ const commonConfig = merge([
         title: "Webpack demo",
         template: "src/index.html"
       }),
-      new webpack.HashedModuleIdsPlugin()
+      new webpack.HashedModuleIdsPlugin(),
+      new webpack.HotModuleReplacementPlugin()
     ]
   },
   parts.loadJavaScript({ include: PATHS.app })
@@ -39,10 +40,9 @@ const productionConfig = merge([
       filename: "[name].[chunkhash:4].js"
     }
   },
-  parts.loadCSS(),
-  // parts.extractCSS({
-  //   use: ["css-loader", parts.autoprefix()]
-  // }),
+  parts.extractCSS({
+    use: ["css-loader", parts.autoprefix()]
+  }),
   parts.purifyCSS({
     paths: glob.sync(`${PATHS.app}/**/*.js`, { nodir: true })
   }),
@@ -78,7 +78,8 @@ const developmentConfig = merge([
   parts.devServer({
     // Customize host/port here if needed
     host: process.env.HOST,
-    port: process.env.PORT
+    port: process.env.PORT,
+    hotOnly: true
   }),
   parts.loadCSS(),
   parts.loadImages()
