@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
+import { Consumer } from "../../Context";
+
 class Contact extends Component {
   constructor(props) {
     super(props);
@@ -17,13 +19,14 @@ class Contact extends Component {
     });
   };
 
-  onDeleteClick = () => {
+  onDeleteClick = (id, dispatch) => {
     console.log("clicked");
-    this.props.deleteClickHandler();
+    // this.props.deleteClickHandler();
+    dispatch({ type: "DELETE_CONTACT", payload: id });
   };
 
   render() {
-    const { name, email, phone } = this.props.contact;
+    const { id, name, email, phone } = this.props.contact;
     const { onshowContact } = this.state;
 
     let showConatctList;
@@ -42,18 +45,28 @@ class Contact extends Component {
     }
 
     return (
-      <div className="card card-body mb-3">
-        <h4>
-          {name}{" "}
-          <i className="fas fa-sort-down" onClick={() => this.handleClick()} />
-          <i
-            className="fas fa-times"
-            style={{ cursor: "pointer", float: "right", color: "red" }}
-            onClick={this.onDeleteClick}
-          />
-        </h4>
-        {showConatctList}
-      </div>
+      <Consumer>
+        {value => {
+          const { dispatch } = value;
+          return (
+            <div className="card card-body mb-3">
+              <h4>
+                {name}{" "}
+                <i
+                  className="fas fa-sort-down"
+                  onClick={() => this.handleClick()}
+                />
+                <i
+                  className="fas fa-times"
+                  style={{ cursor: "pointer", float: "right", color: "red" }}
+                  onClick={this.onDeleteClick.bind(this, id, dispatch)}
+                />
+              </h4>
+              {showConatctList}
+            </div>
+          );
+        }}
+      </Consumer>
     );
   }
 }

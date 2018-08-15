@@ -4,17 +4,21 @@ import { hot } from "react-hot-loader";
 import Header from "./layout/Header";
 import Contacts from "./features/Contacts/Contacts";
 
+import { Provide } from "./Context";
+
 //import "./App.css";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Header branding="Contact Manager" />
-        <div className="container">
-          <Contacts />
+      <Provide>
+        <div className="App">
+          <Header branding="Contact Manager" />
+          <div className="container">
+            <Contacts />
+          </div>
         </div>
-      </div>
+      </Provide>
     );
   }
 }
