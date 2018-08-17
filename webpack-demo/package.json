@@ -45,6 +45,7 @@
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-hot-loader": "^4.3.4",
-    "react-loadable": "^5.4.0"
+    "react-loadable": "^5.4.0",
+    "uuid": "^3.3.2"
   }
 }
