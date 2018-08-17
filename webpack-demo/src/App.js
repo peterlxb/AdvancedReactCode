@@ -3,6 +3,8 @@ import { hot } from "react-hot-loader";
 
 import Header from "./layout/Header";
 import Contacts from "./features/Contacts/Contacts";
+import AddContact from "./features/AddContact/AddContact";
+//import AddContact from "./features/AddContact/AddContact-ref";
 
 import { Provide } from "./Context";
 
@@ -13,6 +15,7 @@ class App extends Component {
     return (
       <Provide>
         <div className="App">
+          <AddContact />
           <Header branding="Contact Manager" />
           <div className="container">
             <Contacts />
