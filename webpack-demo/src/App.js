@@ -1,30 +1,27 @@
 import React, { Component } from "react";
-import { Layout } from "antd";
-import Headers from "./layout/Layout";
-import Contact from "./features/Contact/Contact";
+import { hot } from "react-hot-loader";
 
-const { Content, Footer } = Layout;
+import Header from "./layout/Header";
+import Contacts from "./features/Contacts/Contacts";
+import AddContact from "./features/AddContact/AddContact";
+//import AddContact from "./features/AddContact/AddContact-ref";
+
+import { Provide } from "./Context";
+
+//import "./App.css";
 
 class App extends Component {
   render() {
     return (
-      <div>
-        <Layout>
-          <Headers branding="Contact Manager" />
-          <Content style={{ padding: "0 50px", marginTop: 64 }}>
-            <Contact
-              name="Peter"
-              email="peter@gmail.com"
-              phone="555-5555-555"
-            />
-            <Contact
-              name="Peter"
-              email="peter@gmail.com"
-              phone="555-5555-555"
-            />
-          </Content>
-        </Layout>
-      </div>
+      <Provide>
+        <div className="App">
+          <AddContact />
+          <Header branding="Contact Manager" />
+          <div className="container">
+            <Contacts />
+          </div>
+        </div>
+      </Provide>
     );
   }
 }
